@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 
 
-    <link rel="stylesheet" href="{% static 'cdd/blog.css' %}" >
+    <link rel="stylesheet" href="{% static 'SocialNetwork/static/css/master.css' %}" >
 
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"> 
 </head>
@@ -30,8 +30,46 @@
 
           
           <li class="nav-item">
-            <a class="nav-link" href=""></a>
+            <a class="nav-link" href="{% url 'homepage' %}">Home</a>
           </li>
+
+
+
+
+
+          {% if user.is_authenticated %}
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Post</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Groups</a>
+          </li>
+                    
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Create a Group</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a>
+          </li>
+        
+          {% else %}
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'homepage' %}">Groups</a>
+          </li>
+  
+          {% endif %}
              
         </ul>
 
